@@ -1,0 +1,81 @@
+body {
+    overflow-x: hidden;
+    background-color: #f8f9fa;
+}
+
+#sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: white;
+    transition: all 0.3s;
+}
+
+#page-content-wrapper {
+    flex: 1;
+}
+
+#sidebar.toggled {
+    margin-left: -250px;
+}
+
+.sidebar-heading {
+    padding: 10px 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: #343a40;
+    color: white;
+}
+
+.list-group-item {
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.list-group-item:last-child {
+    border-bottom: none;
+}
+
+.list-group-item-action {
+    background-color: #343a40;
+    color: white;
+}
+
+.list-group-item-action:hover {
+    background-color: #495057;
+    color: white;
+}
+
+.table thead th {
+    background-color: #0056b3;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+/* .btn-outline-success {
+    color: #004085;
+    border-color: #004085;
+}
+
+.btn-outline-success:hover {
+    color: white;
+    background-color: #004085;
+    border-color: #004085;
+} */
+
+/* .pagination .page-link {
+    color: #343a40;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #343a40;
+    border-color: #343a40;
+} */
