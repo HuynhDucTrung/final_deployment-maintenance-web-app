@@ -13,6 +13,35 @@ if (isset($_SESSION["user"])) {
     <title>Login Form</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+        function validateLoginForm() {
+            var name = document.forms["loginForm"]["name"].value;
+            var password = document.forms["loginForm"]["password"].value;
+            var errors = [];
+
+            // Kiểm tra tên
+            var namePattern = /^[a-zA-Z\s]{2,16}$/;
+            if (!name.match(namePattern)) {
+                errors.push("Name must be between 2 and 16 characters and contain only letters.");
+            }
+
+            if (!password) {
+                errors.push("Password is required");
+            }
+            
+            if ((password.match(/\d/g) || []).length < 3) {
+                errors.push("Password must have at least three digits");
+            }
+
+            if (errors.length > 0) {
+                var errorText = errors.join("\n");
+                alert(errorText);
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -50,7 +79,7 @@ if (isset($_SESSION["user"])) {
                             }
                         }
                         ?>
-                        <form action="login.php" method="post">
+                        <form name="loginForm" action="login.php" method="post" onsubmit="return validateLoginForm()">
                             <div class="form-group mb-3">
                                 <label for="name">Name</label>
                                 <input type="text" name="name" class="form-control" required>
