@@ -24,7 +24,7 @@ if (isset($_SESSION["user"])) {
             // Kiểm tra tên
             var namePattern = /^[a-zA-Z\s]{2,16}$/;
             if (!name.match(namePattern)) {
-                errors.push("Name must be between 2 and 16 characters and contain only letters and spaces.");
+                errors.push("Name must be between 2 and 16 characters and contain only letters.");
             }
 
             if (!email || !password || !repeatPassword) {
@@ -47,6 +47,9 @@ if (isset($_SESSION["user"])) {
             }
             if (!/[\W_]/.test(password)) {
                 errors.push("Password must have at least one special character");
+            }
+            if ((password.match(/\d/g) || []).length < 3) {
+                errors.push("Password must have at least three digits");
             }
             if (password !== repeatPassword) {
                 errors.push("Password does not match");
@@ -84,7 +87,7 @@ if (isset($_SESSION["user"])) {
 
                             // Kiểm tra tên
                             if (!preg_match("/^[a-zA-Z\s]{2,16}$/", $name)) {
-                                array_push($errors, "Name must be between 2 and 16 characters and contain only letters and spaces.");
+                                array_push($errors, "Name must be between 2 and 16 characters and contain only letters.");
                             }
 
                             if (empty($name) OR empty($email) OR empty($password) OR empty($passwordRepeat)) {
@@ -106,6 +109,9 @@ if (isset($_SESSION["user"])) {
                             }
                             if (!preg_match('/[\W_]/', $password)) {
                                 array_push($errors, "Password must have at least one special character");
+                            }
+                            if ((preg_match_all('/\d/', $password)) < 3) {
+                                array_push($errors, "Password must have at least three digits");
                             }
                             if ($password !== $passwordRepeat) {
                                 array_push($errors, "Password does not match");
